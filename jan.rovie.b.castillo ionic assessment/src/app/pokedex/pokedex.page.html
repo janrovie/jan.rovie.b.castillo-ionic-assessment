@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color= primary>
+    <ion-title>Jan Rovie's Pokédex</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-row>
+    <ion-col size="12" size-sm="8" offset-sm="2">
+
+      <ion-item>
+        <!-- <ion-label>Generation</ion-label> -->
+        <ion-select placeholder="Select" interface="popover" 
+        [(ngModel)]="selectedGeneration" (ionChange)="getPokemonListByGeneration()">
+          <ion-select-option value={{generation.name}} *ngFor="let  generation of  generationList">{{generation.name}}</ion-select-option>
+          <!-- <ion-select-option value="2">2</ion-select-option>
+          <ion-select-option value="3">3</ion-select-option>
+          <ion-select-option value="4">4</ion-select-option>
+          <ion-select-option value="5">5</ion-select-option>
+          <ion-select-option value="6">6</ion-select-option>
+          <ion-select-option value="7">7</ion-select-option> -->
+        </ion-select>
+      </ion-item>
+     
+
+    <ion-header translucent *ngIf="selectedGeneration">
+      <br>
+      <ion-toolbar color= secondary>
+        <ion-title>{{selectedGeneration}}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    
+      <ion-list>
+ 
+          <ion-item button *ngFor="let pokemon of  pokemonList" (click)="showPokemonDetail(pokemon)"detail>
+            <ion-label>
+              <h3>{{pokemon.name}}</h3>
+            </ion-label>
+          </ion-item>
+
+      </ion-list>
+  
+
+    
+    </ion-col>
+    </ion-row>
+     
+
+</ion-content>
